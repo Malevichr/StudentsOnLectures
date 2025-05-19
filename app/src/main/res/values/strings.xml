@@ -3,4 +3,8 @@
     <string name="teacher">Teacher</string>
     <string name="student">Student</string>
     <string name="registration">Registration</string>
+    <string name="full_name">Full name</string>
+    <string name="are_you_teacher">Are you teacher?</string>
+    <string name="back">Back</string>
+    <string name="register">Register</string>
 </resources>

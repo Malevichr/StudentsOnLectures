@@ -5,10 +5,13 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
+import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
+import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.Navigate
 import ru.malevichrp.studentsOnLectures.core.presentation.Screen
 
-class MainActivity : AppCompatActivity(), Navigate {
+class MainActivity : AppCompatActivity(), Navigate, BackAction, ProvideViewModel {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,5 +28,13 @@ class MainActivity : AppCompatActivity(), Navigate {
 
     override fun navigate(screen: Screen) {
         screen.show(R.id.container, supportFragmentManager)
+    }
+
+    override fun back() {
+        onBackPressedDispatcher.onBackPressed()
+    }
+
+    override fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T {
+        return (application as ProvideViewModel).provideViewModel(clazz)
     }
 }

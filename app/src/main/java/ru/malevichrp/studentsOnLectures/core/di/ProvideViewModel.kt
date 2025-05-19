@@ -1,6 +1,7 @@
 package ru.malevichrp.studentsOnLectures.core.di
 
 import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
+import ru.malevichrp.studentsOnLectures.fragments.registration.ProvideRegistrationViewModel
 
 interface ProvideViewModel {
     fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T
@@ -11,6 +12,7 @@ interface ProvideViewModel {
 
         init {
             chain = Error()
+            chain = ProvideRegistrationViewModel(core, chain)
         }
 
         override fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T =
