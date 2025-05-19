@@ -3,6 +3,7 @@ package ru.malevichrp.studentsOnLectures.core.di
 import android.content.Context
 import android.content.SharedPreferences
 import ru.malevichrp.studentsOnLectures.core.presentation.RunAsync
+import ru.malevichrp.studentsOnLectures.data.CacheModule
 
 class Core(
     context: Context,
@@ -11,10 +12,8 @@ class Core(
     val runAsync: RunAsync = RunAsync.Base()
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences("slAppData", Context.MODE_PRIVATE)
-
-    val runUiTests = false
-    val size = 1000
     val sharedCollection = SharedCollection(sharedPreferences)
+    val cacheModule = CacheModule.Base(context)
 }
 
 class SharedCollection(sharedPreferences: SharedPreferences) {
