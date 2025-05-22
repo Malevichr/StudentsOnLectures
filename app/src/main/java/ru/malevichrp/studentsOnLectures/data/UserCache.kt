@@ -2,9 +2,13 @@ package ru.malevichrp.studentsOnLectures.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(
+    tableName = "Users",
+    indices = [Index(value = ["full_name", "is_teacher"], unique = true)]
+)
 data class UserCache(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo("id")

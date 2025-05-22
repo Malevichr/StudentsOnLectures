@@ -7,4 +7,6 @@
     <string name="are_you_teacher">Are you teacher?</string>
     <string name="back">Back</string>
     <string name="register">Register</string>
+    <string name="authorization">Authorization</string>
+    <string name="log_in">Log in</string>
 </resources>

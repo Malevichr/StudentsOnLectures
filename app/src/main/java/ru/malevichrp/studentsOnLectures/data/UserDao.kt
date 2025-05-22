@@ -6,6 +6,6 @@ import androidx.room.OnConflictStrategy
 
 @Dao
 interface UserDao {
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun saveUser(userCache: UserCache)
 }
