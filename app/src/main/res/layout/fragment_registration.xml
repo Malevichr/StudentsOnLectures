@@ -18,40 +18,34 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <com.google.android.material.textfield.TextInputLayout
+    <ru.malevichrp.studentsOnLectures.views.errorInput.ErrorInputCustomView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="8dp"
-        android:layout_margin="16dp"
-        android:hint="@string/full_name">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameInput"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:freezesText="true"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:id="@+id/nameInput"/>
 
     <Switch
         android:id="@+id/isTeacherSwitch"
-        android:text="@string/are_you_teacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/are_you_teacher"
         tools:ignore="UseSwitchCompatOrMaterialXml" />
+
     <Space
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
+
     <Button
         android:id="@+id/registerButton"
-        android:text="@string/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:text="@string/register" />
+
     <Button
         android:id="@+id/backButton"
-        android:text="@string/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:text="@string/back" />
 </LinearLayout>

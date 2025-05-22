@@ -1,4 +1,4 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration
+package ru.malevichrp.studentsOnLectures.fragments.registration.presentation
 
 import ru.malevichrp.studentsOnLectures.core.presentation.Screen
 
