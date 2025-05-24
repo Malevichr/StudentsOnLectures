@@ -1,14 +1,16 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration.presentation
+package ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation
 
+import ru.malevichrp.studentsOnLectures.core.di.ClearViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.RunAsync
-import ru.malevichrp.studentsOnLectures.fragments.registration.data.RegistrationData
-import ru.malevichrp.studentsOnLectures.fragments.registration.data.RegistrationRepository
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.data.RegistrationData
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.data.RegistrationRepository
 
 class RegistrationViewModel(
     private val repository: RegistrationRepository,
     uiObservable: RegistrationUiObservable,
-    runAsync: RunAsync
+    runAsync: RunAsync,
+    private val clearViewModel: ClearViewModel
 ) : MyViewModel.Async.Abstract<RegistrationUiState>(
     runAsync,
     uiObservable
@@ -22,6 +24,10 @@ class RegistrationViewModel(
                 RegistrationUiState.Error(e.message.toString())
             }
         }
+    }
+
+    fun clear() {
+        clearViewModel.clear(this.javaClass)
     }
 }
 

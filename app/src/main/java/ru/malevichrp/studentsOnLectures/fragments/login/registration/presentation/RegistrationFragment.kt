@@ -1,14 +1,15 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration.presentation
+package ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.AbstractFragment
 import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
 import ru.malevichrp.studentsOnLectures.databinding.FragmentRegistrationBinding
-import ru.malevichrp.studentsOnLectures.fragments.registration.data.RegistrationData
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.data.RegistrationData
 
 class RegistrationFragment :
     AbstractFragment.Async<RegistrationUiState, RegistrationViewModel, FragmentRegistrationBinding>() {
@@ -22,6 +23,12 @@ class RegistrationFragment :
 
         if (uiState.navigateToBack())
             (requireActivity() as BackAction).back()
+    }
+    private val onBackCallBack = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            viewModel.clear()
+            this.isEnabled = false
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -38,5 +45,8 @@ class RegistrationFragment :
             )
             viewModel.register(registrationData)
         }
+        (requireActivity() as BackAction).addBackAction(onBackCallBack)
+        binding.nameInput.addHint("Full name")
+        onBackCallBack.isEnabled = true
     }
 }

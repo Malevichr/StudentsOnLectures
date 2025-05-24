@@ -1,12 +1,12 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration
+package ru.malevichrp.studentsOnLectures.fragments.login.registration
 
 import ru.malevichrp.studentsOnLectures.core.di.Core
 import ru.malevichrp.studentsOnLectures.core.di.Module
 import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
-import ru.malevichrp.studentsOnLectures.fragments.registration.data.RegistrationRepository
-import ru.malevichrp.studentsOnLectures.fragments.registration.presentation.RegistrationUiObservable
-import ru.malevichrp.studentsOnLectures.fragments.registration.presentation.RegistrationViewModel
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.data.RegistrationRepository
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.RegistrationUiObservable
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.RegistrationViewModel
 
 class ProvideRegistrationViewModel(
     core: Core,
@@ -28,7 +28,8 @@ class RegistrationModule(
         return RegistrationViewModel(
             RegistrationRepository.Base(core.cacheModule.userDao()),
             RegistrationUiObservable.Base(),
-            core.runAsync
+            core.runAsync,
+            core.clearViewModel
         )
     }
 }

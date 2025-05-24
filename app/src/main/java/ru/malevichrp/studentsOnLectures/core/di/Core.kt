@@ -2,6 +2,7 @@ package ru.malevichrp.studentsOnLectures.core.di
 
 import android.content.Context
 import android.content.SharedPreferences
+import ru.malevichrp.studentsOnLectures.core.data.BooleanCache
 import ru.malevichrp.studentsOnLectures.core.presentation.RunAsync
 import ru.malevichrp.studentsOnLectures.data.CacheModule
 
@@ -17,4 +18,5 @@ class Core(
 }
 
 class SharedCollection(sharedPreferences: SharedPreferences) {
+    val isTeacher = BooleanCache.Base(sharedPreferences, "isTeacherPref", false)
 }

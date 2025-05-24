@@ -1,4 +1,4 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration.data
+package ru.malevichrp.studentsOnLectures.fragments.login.registration.data
 
 data class RegistrationData(
     val fullName: String,

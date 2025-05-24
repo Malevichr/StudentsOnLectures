@@ -64,6 +64,9 @@ class ErrorInputCustomView : FrameLayout, UpdateError {
     }
 
     fun inputText(): String = binding.inputEditText.text.toString()
+    fun addHint(hint: String) {
+        binding.inputLayout.hint = hint
+    }
 }
 
 interface UpdateError {
