@@ -1,7 +1,9 @@
 package ru.malevichrp.studentsOnLectures.core.di
 
 import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
-import ru.malevichrp.studentsOnLectures.fragments.registration.ProvideRegistrationViewModel
+import ru.malevichrp.studentsOnLectures.fragments.login.authorization.ProvideAuthViewModel
+import ru.malevichrp.studentsOnLectures.fragments.login.chooseProfile.ProvideChooseProfileViewModel
+import ru.malevichrp.studentsOnLectures.fragments.login.registration.ProvideRegistrationViewModel
 
 interface ProvideViewModel {
     fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T
@@ -13,6 +15,8 @@ interface ProvideViewModel {
         init {
             chain = Error()
             chain = ProvideRegistrationViewModel(core, chain)
+            chain = ProvideChooseProfileViewModel(core, chain)
+            chain = ProvideAuthViewModel(core, chain)
         }
 
         override fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T =

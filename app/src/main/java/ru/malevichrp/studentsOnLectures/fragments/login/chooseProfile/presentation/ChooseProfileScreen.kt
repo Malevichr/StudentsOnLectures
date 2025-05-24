@@ -1,4 +1,4 @@
-package ru.malevichrp.studentsOnLectures.fragments.chooseProfile
+package ru.malevichrp.studentsOnLectures.fragments.login.chooseProfile.presentation
 
 import ru.malevichrp.studentsOnLectures.core.presentation.Screen
 

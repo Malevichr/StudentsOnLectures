@@ -1,6 +1,7 @@
 package ru.malevichrp.studentsOnLectures
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity(), Navigate, BackAction, ProvideViewModel
 
     override fun back() {
         onBackPressedDispatcher.onBackPressed()
+    }
+
+    override fun addBackAction(action: OnBackPressedCallback) {
+        onBackPressedDispatcher.addCallback(action)
     }
 
     override fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T {

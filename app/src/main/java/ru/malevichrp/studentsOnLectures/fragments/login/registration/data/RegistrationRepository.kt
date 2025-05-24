@@ -1,4 +1,4 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration.data
+package ru.malevichrp.studentsOnLectures.fragments.login.registration.data
 
 import ru.malevichrp.studentsOnLectures.data.UserCache
 import ru.malevichrp.studentsOnLectures.data.UserDao

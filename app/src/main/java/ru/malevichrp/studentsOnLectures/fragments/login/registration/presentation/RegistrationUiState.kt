@@ -1,4 +1,4 @@
-package ru.malevichrp.studentsOnLectures.fragments.registration.presentation
+package ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation
 
 import ru.malevichrp.studentsOnLectures.core.presentation.UiState
 import ru.malevichrp.studentsOnLectures.views.errorInput.ErrorInputUiState
