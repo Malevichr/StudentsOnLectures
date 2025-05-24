@@ -24,12 +24,7 @@ class RegistrationFragment :
         if (uiState.navigateToBack())
             (requireActivity() as BackAction).back()
     }
-    private val onBackCallBack = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() {
-            viewModel.clear()
-            this.isEnabled = false
-        }
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,8 +40,15 @@ class RegistrationFragment :
             )
             viewModel.register(registrationData)
         }
-        (requireActivity() as BackAction).addBackAction(onBackCallBack)
         binding.nameInput.addHint("Full name")
-        onBackCallBack.isEnabled = true
+
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    viewModel.clear()
+                    parentFragmentManager.popBackStack()
+                }
+            })
     }
 }

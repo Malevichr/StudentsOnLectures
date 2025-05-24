@@ -12,7 +12,7 @@ import androidx.room.PrimaryKey
 data class UserCache(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo("id")
-    val id: Int = 0,
+    val id: Long = 0,
     @ColumnInfo("full_name")
     val fullName: String,
     @ColumnInfo("is_teacher")

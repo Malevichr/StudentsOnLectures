@@ -10,10 +10,11 @@ class RegistrationViewModel(
     private val repository: RegistrationRepository,
     uiObservable: RegistrationUiObservable,
     runAsync: RunAsync,
-    private val clearViewModel: ClearViewModel
+    clearViewModel: ClearViewModel
 ) : MyViewModel.Async.Abstract<RegistrationUiState>(
     runAsync,
-    uiObservable
+    uiObservable,
+    clearViewModel
 ) {
     fun register(registrationData: RegistrationData) {
         handleAsync {
@@ -24,10 +25,6 @@ class RegistrationViewModel(
                 RegistrationUiState.Error(e.message.toString())
             }
         }
-    }
-
-    fun clear() {
-        clearViewModel.clear(this.javaClass)
     }
 }
 

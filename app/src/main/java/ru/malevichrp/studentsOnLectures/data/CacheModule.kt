@@ -5,6 +5,7 @@ import androidx.room.Room
 
 interface CacheModule {
     fun userDao(): UserDao
+    fun groupDao(): GroupsDao
     class Base(applicationContext: Context) : CacheModule {
         private val database by lazy {
             Room.databaseBuilder(
@@ -16,8 +17,9 @@ interface CacheModule {
                 .build()
         }
 
-        override fun userDao(): UserDao {
-            return database.userDao()
-        }
+        override fun userDao(): UserDao = database.userDao()
+
+        override fun groupDao(): GroupsDao = database.groupDao()
+
     }
 }
