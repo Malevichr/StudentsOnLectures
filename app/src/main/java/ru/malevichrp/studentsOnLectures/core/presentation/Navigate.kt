@@ -7,11 +7,14 @@ import ru.malevichrp.studentsOnLectures.fragments.login.chooseProfile.presentati
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.NavigateToRegistration
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.RegistrationScreen
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
+import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.AddGroupScreen
+import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.NavigateToAddGroup
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.GroupsScreen
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
 
 interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
-    NavigateToAuth, NavigateToStudentSearch, NavigateToTeacherGroups {
+    NavigateToAuth, NavigateToStudentSearch, NavigateToTeacherGroups,
+    NavigateToAddGroup {
     fun navigate(screen: Screen)
     override fun navigateToChooseProfile() {
         navigate(ChooseProfileScreen)
@@ -31,5 +34,9 @@ interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
 
     override fun navigateToStudentSearch() {
         TODO("Not yet implemented")
+    }
+
+    override fun navigateToAddGroup() {
+        navigate(AddGroupScreen)
     }
 }

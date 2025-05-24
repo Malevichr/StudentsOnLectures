@@ -10,6 +10,6 @@ interface GroupsDao {
     @Query("SELECT * FROM Groups WHERE teacher_id=:id")
     suspend fun groupsByTeacherId(id: Long): List<GroupCache>
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addGroup(groupCache: GroupCache)
 }

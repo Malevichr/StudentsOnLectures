@@ -2,10 +2,14 @@ package ru.malevichrp.studentsOnLectures.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.data.GroupData
 
-@Entity(tableName = "Groups")
+@Entity(
+    tableName = "Groups",
+    indices = [Index(value = ["teacher_id", "group_name"], unique = true)]
+)
 data class GroupCache(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo("id")
