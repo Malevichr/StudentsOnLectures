@@ -17,7 +17,7 @@ interface AuthRepository {
             val user = userDao.findUser(
                 authData.fullName,
                 isTeacher = isTeacher.read()
-            ) ?: throw IllegalStateException("Wrong data")
+            ) ?: throw IllegalStateException("User isn't exist")
             targetTeacherId.save(user.id)
             return AuthResponse(isTeacher.read())
         }

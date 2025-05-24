@@ -9,6 +9,7 @@ import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.AbstractFragment
 import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
 import ru.malevichrp.studentsOnLectures.databinding.FragmentGroupsBinding
+import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.NavigateToAddGroup
 import ru.malevichrp.studentsOnLectures.views.recycler.TextRecyclerAdapter
 
 class GroupsFragment :
@@ -34,7 +35,7 @@ class GroupsFragment :
             (requireActivity() as BackAction).back()
         }
         binding.addGroupButton.setOnClickListener {
-
+            (requireActivity() as NavigateToAddGroup).navigateToAddGroup()
         }
         viewModel.groups()
 
