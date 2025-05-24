@@ -11,7 +11,7 @@ import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
 import ru.malevichrp.studentsOnLectures.databinding.FragmentAuthorizationBinding
 import ru.malevichrp.studentsOnLectures.fragments.login.authorization.data.AuthData
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
-import ru.malevichrp.studentsOnLectures.fragments.teacher.NavigateToTeacherGroups
+import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
 
 class AuthFragment :
     AbstractFragment.Async<AuthUiState, AuthViewModel, FragmentAuthorizationBinding>() {
@@ -20,12 +20,6 @@ class AuthFragment :
             binding.profileText)
         uiState.navigateTeacher(requireActivity() as NavigateToTeacherGroups)
         uiState.navigateStudent(requireActivity() as NavigateToStudentSearch)
-    }
-    private val onBackCallBack = object : OnBackPressedCallback(false) {
-        override fun handleOnBackPressed() {
-            viewModel.clear()
-            this.isEnabled = false
-        }
     }
 
     override fun inflate(
@@ -49,8 +43,14 @@ class AuthFragment :
         binding.backButton.setOnClickListener {
             (requireActivity() as BackAction).back()
         }
-
-        (requireActivity() as BackAction).addBackAction(onBackCallBack)
+        requireActivity().onBackPressedDispatcher.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    viewModel.clear()
+                    parentFragmentManager.popBackStack()
+                }
+            })
 
         update(viewModel.init())
     }

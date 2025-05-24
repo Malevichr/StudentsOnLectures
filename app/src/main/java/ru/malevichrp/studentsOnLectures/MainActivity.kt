@@ -1,7 +1,6 @@
 package ru.malevichrp.studentsOnLectures
 
 import android.os.Bundle
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -12,7 +11,7 @@ import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.Navigate
 import ru.malevichrp.studentsOnLectures.core.presentation.Screen
 
-class MainActivity : AppCompatActivity(), Navigate, BackAction, ProvideViewModel {
+class MainActivity : AppCompatActivity(), Navigate, ProvideViewModel, BackAction {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,15 +30,11 @@ class MainActivity : AppCompatActivity(), Navigate, BackAction, ProvideViewModel
         screen.show(R.id.container, supportFragmentManager)
     }
 
-    override fun back() {
-        onBackPressedDispatcher.onBackPressed()
-    }
-
-    override fun addBackAction(action: OnBackPressedCallback) {
-        onBackPressedDispatcher.addCallback(action)
-    }
-
     override fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T {
         return (application as ProvideViewModel).provideViewModel(clazz)
+    }
+
+    override fun back() {
+        onBackPressedDispatcher.onBackPressed()
     }
 }

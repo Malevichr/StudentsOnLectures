@@ -10,15 +10,19 @@ class ChooseProfileViewModel(
 ) : MyViewModel {
     fun toStudentProfile() {
         repository.changeStudentProfile()
-        clearViewModel.clear(this.javaClass)
+        clear()
     }
 
     fun toTeacherProfile() {
         repository.changeTeacherProfile()
-        clearViewModel.clear(this.javaClass)
+        clear()
     }
 
     fun toRegistration() {
+        clear()
+    }
+
+    override fun clear() {
         clearViewModel.clear(this.javaClass)
     }
 }

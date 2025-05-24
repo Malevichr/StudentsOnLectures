@@ -1,6 +1,7 @@
 package ru.malevichrp.studentsOnLectures.fragments.login.authorization.data
 
 import ru.malevichrp.studentsOnLectures.core.data.BooleanCache
+import ru.malevichrp.studentsOnLectures.core.data.LongCache
 import ru.malevichrp.studentsOnLectures.data.UserDao
 
 interface AuthRepository {
@@ -9,13 +10,15 @@ interface AuthRepository {
 
     class Base(
         private val isTeacher: BooleanCache,
-        private val userDao: UserDao
+        private val userDao: UserDao,
+        private val targetTeacherId: LongCache
     ) : AuthRepository {
         override suspend fun login(authData: AuthData): AuthResponse {
-            userDao.findUser(
+            val user = userDao.findUser(
                 authData.fullName,
                 isTeacher = isTeacher.read()
             ) ?: throw IllegalStateException("Wrong data")
+            targetTeacherId.save(user.id)
             return AuthResponse(isTeacher.read())
         }
 

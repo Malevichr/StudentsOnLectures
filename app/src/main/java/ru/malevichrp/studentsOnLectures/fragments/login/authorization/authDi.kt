@@ -25,8 +25,9 @@ class AuthModule(
     override fun viewModel(): AuthViewModel {
         return AuthViewModel(
             AuthRepository.Base(
-                core.sharedCollection.isTeacher,
-                core.cacheModule.userDao()
+                isTeacher = core.sharedCollection.isTeacher,
+                userDao = core.cacheModule.userDao(),
+                targetTeacherId = core.sharedCollection.targetTeacherId
             ),
             AuthUiObservable.Base(),
             core.runAsync,

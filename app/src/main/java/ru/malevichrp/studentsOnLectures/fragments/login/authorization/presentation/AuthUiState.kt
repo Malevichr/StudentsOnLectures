@@ -2,7 +2,7 @@ package ru.malevichrp.studentsOnLectures.fragments.login.authorization.presentat
 
 import ru.malevichrp.studentsOnLectures.core.presentation.UiState
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
-import ru.malevichrp.studentsOnLectures.fragments.teacher.NavigateToTeacherGroups
+import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
 import ru.malevichrp.studentsOnLectures.views.errorInput.ErrorInputUiState
 import ru.malevichrp.studentsOnLectures.views.errorInput.UpdateError
 import ru.malevichrp.studentsOnLectures.views.text.UpdateText

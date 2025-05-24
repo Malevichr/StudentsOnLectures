@@ -7,7 +7,8 @@ import ru.malevichrp.studentsOnLectures.fragments.login.chooseProfile.presentati
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.NavigateToRegistration
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.RegistrationScreen
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
-import ru.malevichrp.studentsOnLectures.fragments.teacher.NavigateToTeacherGroups
+import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.GroupsScreen
+import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
 
 interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
     NavigateToAuth, NavigateToStudentSearch, NavigateToTeacherGroups {
@@ -25,7 +26,7 @@ interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
     }
 
     override fun navigateToTeacherGroups() {
-        TODO("Not yet implemented")
+        navigate(GroupsScreen)
     }
 
     override fun navigateToStudentSearch() {

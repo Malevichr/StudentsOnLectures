@@ -10,19 +10,21 @@ class AuthViewModel(
     private val repository: AuthRepository,
     observable: AuthUiObservable,
     runAsync: RunAsync,
-    private val clearViewModel: ClearViewModel
+    clearViewModel: ClearViewModel
 ) : MyViewModel.Async.Abstract<AuthUiState>(
     runAsync,
-    observable
+    observable,
+    clearViewModel
 ) {
     fun login(authData: AuthData) {
         handleAsync {
             try {
                 val response = repository.login(authData)
+                clear()
                 if (response.isTeacher)
-                    AuthUiState.SuccessTeacher.also { clear() }
+                    AuthUiState.SuccessTeacher
                 else
-                    AuthUiState.SuccessStudent.also { clear() }
+                    AuthUiState.SuccessStudent
             } catch (e: Exception) {
                 AuthUiState.Error(e.message.toString())
             }
@@ -34,9 +36,5 @@ class AuthViewModel(
             AuthUiState.Teacher
         else
             AuthUiState.Student
-    }
-
-    fun clear() {
-        clearViewModel.clear(this.javaClass)
     }
 }
