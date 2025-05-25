@@ -11,4 +11,5 @@
     <string name="log_in">Log in</string>
     <string name="add_group">Add group</string>
     <string name="exit">Exit</string>
+    <string name="start_new_session">Start new session</string>
 </resources>

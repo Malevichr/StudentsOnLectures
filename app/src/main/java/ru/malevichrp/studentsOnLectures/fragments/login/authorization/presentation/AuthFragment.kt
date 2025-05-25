@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.AbstractFragment
 import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
@@ -16,8 +15,10 @@ import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.Na
 class AuthFragment :
     AbstractFragment.Async<AuthUiState, AuthViewModel, FragmentAuthorizationBinding>() {
     override val update: (AuthUiState) -> Unit = { uiState ->
-        uiState.show(binding.nameInput,
-            binding.profileText)
+        uiState.show(
+            binding.nameInput,
+            binding.profileText
+        )
         uiState.navigateTeacher(requireActivity() as NavigateToTeacherGroups)
         uiState.navigateStudent(requireActivity() as NavigateToStudentSearch)
     }
@@ -43,14 +44,10 @@ class AuthFragment :
         binding.backButton.setOnClickListener {
             (requireActivity() as BackAction).back()
         }
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    viewModel.clear()
-                    parentFragmentManager.popBackStack()
-                }
-            })
+        (requireActivity() as BackAction).addCallback(viewLifecycleOwner) {
+            viewModel.clear()
+            parentFragmentManager.popBackStack()
+        }
 
         update(viewModel.init())
     }

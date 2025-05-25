@@ -1,10 +1,12 @@
 package ru.malevichrp.studentsOnLectures
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.LifecycleOwner
 import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
 import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
@@ -36,5 +38,16 @@ class MainActivity : AppCompatActivity(), Navigate, ProvideViewModel, BackAction
 
     override fun back() {
         onBackPressedDispatcher.onBackPressed()
+    }
+
+    override fun addCallback(lifecycleOwner: LifecycleOwner, action: () -> Unit) {
+        onBackPressedDispatcher.addCallback(
+            lifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    action()
+                }
+            }
+        )
     }
 }
