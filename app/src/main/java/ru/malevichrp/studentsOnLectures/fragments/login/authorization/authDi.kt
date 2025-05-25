@@ -27,7 +27,8 @@ class AuthModule(
             AuthRepository.Base(
                 isTeacher = core.sharedCollection.isTeacher,
                 userDao = core.cacheModule.userDao(),
-                targetTeacherId = core.sharedCollection.targetTeacherId
+                targetTeacherId = core.sharedCollection.targetTeacherId,
+                targetName = core.sharedCollection.targetName
             ),
             AuthUiObservable.Base(),
             core.runAsync,

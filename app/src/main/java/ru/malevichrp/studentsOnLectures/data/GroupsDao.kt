@@ -12,4 +12,7 @@ interface GroupsDao {
 
     @Insert(onConflict = OnConflictStrategy.ABORT)
     suspend fun addGroup(groupCache: GroupCache)
+
+    @Query("SELECT * FROM Groups WHERE id = :id")
+    suspend fun groupById(id: Long): GroupCache
 }

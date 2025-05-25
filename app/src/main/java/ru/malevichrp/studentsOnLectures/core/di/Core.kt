@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import ru.malevichrp.studentsOnLectures.core.data.BooleanCache
 import ru.malevichrp.studentsOnLectures.core.data.LongCache
+import ru.malevichrp.studentsOnLectures.core.data.StringCache
 import ru.malevichrp.studentsOnLectures.core.presentation.RunAsync
 import ru.malevichrp.studentsOnLectures.data.CacheModule
 
@@ -22,4 +23,7 @@ class SharedCollection(sharedPreferences: SharedPreferences) {
     val isTeacher = BooleanCache.Base(sharedPreferences, "isTeacher", false)
     val targetTeacherId = LongCache.Base(sharedPreferences, "targetTeacherId", -1)
     val targetGroupId = LongCache.Base(sharedPreferences, "targetGroupId", -1)
+    val targetName = StringCache.Base(sharedPreferences, "targetName", "Name")
+    val targetGroupName = StringCache.Base(sharedPreferences, "targetGroupName", "Group name")
+
 }

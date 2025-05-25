@@ -9,12 +9,15 @@ import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentatio
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
 import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.AddGroupScreen
 import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.NavigateToAddGroup
+import ru.malevichrp.studentsOnLectures.fragments.teacher.group.presentation.GroupScreen
+import ru.malevichrp.studentsOnLectures.fragments.teacher.group.presentation.NavigateToGroup
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.GroupsScreen
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
+import ru.malevichrp.studentsOnLectures.fragments.teacher.session.presentation.NavigateToSession
 
 interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
     NavigateToAuth, NavigateToStudentSearch, NavigateToTeacherGroups,
-    NavigateToAddGroup {
+    NavigateToAddGroup, NavigateToGroup, NavigateToSession {
     fun navigate(screen: Screen)
     override fun navigateToChooseProfile() {
         navigate(ChooseProfileScreen)
@@ -38,5 +41,13 @@ interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
 
     override fun navigateToAddGroup() {
         navigate(AddGroupScreen)
+    }
+
+    override fun navigateToGroup() {
+        navigate(GroupScreen)
+    }
+
+    override fun navigateToSession() {
+        TODO("Not yet implemented")
     }
 }

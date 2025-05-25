@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.OnBackPressedCallback
 import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.AbstractFragment
 import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
@@ -35,14 +34,11 @@ class AddGroupFragment :
             (requireActivity() as BackAction).back()
         }
         binding.groupInput.addHint("Group name")
+        binding.teacherNameText.text = viewModel.fullName()
 
-        requireActivity().onBackPressedDispatcher.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    viewModel.clear()
-                    parentFragmentManager.popBackStack()
-                }
-            })
+        (requireActivity() as BackAction).addCallback(viewLifecycleOwner) {
+            viewModel.clear()
+            parentFragmentManager.popBackStack()
+        }
     }
 }

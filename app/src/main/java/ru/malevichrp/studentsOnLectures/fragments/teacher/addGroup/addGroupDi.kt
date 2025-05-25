@@ -25,7 +25,8 @@ class AddGroupModule(
     override fun viewModel(): AddGroupViewModel = AddGroupViewModel(
         AddGroupRepository.Base(
             targetTeacherId = core.sharedCollection.targetTeacherId,
-            groupsDao = core.cacheModule.groupDao()
+            groupsDao = core.cacheModule.groupDao(),
+            targetName = core.sharedCollection.targetName
         ),
         runAsync = core.runAsync,
         uiObservable = AddGroupUiObservable.Base(),

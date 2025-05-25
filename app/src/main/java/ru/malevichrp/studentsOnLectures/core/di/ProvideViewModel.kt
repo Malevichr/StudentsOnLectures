@@ -5,6 +5,7 @@ import ru.malevichrp.studentsOnLectures.fragments.login.authorization.ProvideAut
 import ru.malevichrp.studentsOnLectures.fragments.login.chooseProfile.ProvideChooseProfileViewModel
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.ProvideRegistrationViewModel
 import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.ProvideAddGroupViewModel
+import ru.malevichrp.studentsOnLectures.fragments.teacher.group.ProvideGroupViewModel
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.ProvideGroupsViewModel
 
 interface ProvideViewModel {
@@ -21,6 +22,7 @@ interface ProvideViewModel {
             chain = ProvideAuthViewModel(core, chain)
             chain = ProvideGroupsViewModel(core, chain)
             chain = ProvideAddGroupViewModel(core, chain)
+            chain = ProvideGroupViewModel(core, chain)
         }
 
         override fun <T : MyViewModel> provideViewModel(clazz: Class<T>): T =
