@@ -28,7 +28,9 @@ class GroupModule(
                 targetName = core.sharedCollection.targetName,
                 sessionDao = core.cacheModule.sessionDao(),
                 targetGroupId = core.sharedCollection.targetGroupId,
-                targetGroupName = core.sharedCollection.targetGroupName
+                targetGroupName = core.sharedCollection.targetGroupName,
+                targetSessionTimestamp = core.sharedCollection.targetSessionTimestamp,
+                targetSessionId = core.sharedCollection.targetSessionId
             ),
             core.runAsync,
             GroupUiObservable.Base(),

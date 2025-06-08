@@ -10,7 +10,10 @@ import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.data.GroupData
 
 @Entity(
     tableName = "Groups",
-    indices = [Index(value = ["teacher_id", "group_name"], unique = true)],
+    indices = [Index(
+        value =
+        ["teacher_id", "group_name"], unique = true
+    )],
     foreignKeys = [
         ForeignKey(
             entity = UserCache::class,

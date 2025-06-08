@@ -1,13 +1,15 @@
-package ru.malevichrp.studentsOnLectures.views.text
+package ru.malevichrp.studentsOnLectures.views.progress
 
 import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.widget.ProgressBar
 import ru.malevichrp.studentsOnLectures.views.common.UpdateVisibility
 import ru.malevichrp.studentsOnLectures.views.common.VisibilitySavedState
 import ru.malevichrp.studentsOnLectures.views.common.VisibilityUiState
 
-class TextCustomView : androidx.appcompat.widget.AppCompatTextView, UpdateCustomText {
+
+class ProgressCustomView : ProgressBar, UpdateVisibility {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
@@ -16,12 +18,12 @@ class TextCustomView : androidx.appcompat.widget.AppCompatTextView, UpdateCustom
         defStyleAttr
     )
 
-    private var state: VisibilityUiState = VisibilityUiState.Gone
+    private var uiState: VisibilityUiState = VisibilityUiState.Visible
 
     override fun onSaveInstanceState(): Parcelable? {
         return super.onSaveInstanceState()?.let {
             val savedState = VisibilitySavedState(it)
-            savedState.save(state)
+            savedState.save(uiState)
             return savedState
         }
     }
@@ -37,16 +39,8 @@ class TextCustomView : androidx.appcompat.widget.AppCompatTextView, UpdateCustom
     }
 
     override fun update(visibilityUiState: VisibilityUiState) {
-        state = visibilityUiState
-        state.update(this)
-    }
-
-    override fun update(text: String) {
-        this.text = text
+        uiState = visibilityUiState
+        uiState.update(this)
     }
 }
 
-interface UpdateCustomText : UpdateVisibility, UpdateText
-interface UpdateText {
-    fun update(text: String)
-}

@@ -9,7 +9,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import ru.malevichrp.studentsOnLectures.databinding.ErrorInputBinding
 
-class ErrorInputCustomView : FrameLayout, UpdateError {
+class ErrorInputInputCustomView : FrameLayout, UpdateErrorInput {
     private val binding = ErrorInputBinding.inflate(LayoutInflater.from(this.context), this, true)
 
     constructor(context: Context) : super(context)
@@ -69,7 +69,7 @@ class ErrorInputCustomView : FrameLayout, UpdateError {
     }
 }
 
-interface UpdateError {
+interface UpdateErrorInput {
     fun update(uiState: ErrorInputUiState)
     fun update(isError: Boolean)
     fun update(errorText: String?)

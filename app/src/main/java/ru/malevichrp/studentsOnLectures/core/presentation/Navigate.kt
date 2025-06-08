@@ -7,6 +7,7 @@ import ru.malevichrp.studentsOnLectures.fragments.login.chooseProfile.presentati
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.NavigateToRegistration
 import ru.malevichrp.studentsOnLectures.fragments.login.registration.presentation.RegistrationScreen
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
+import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.SearchSessionScreen
 import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.AddGroupScreen
 import ru.malevichrp.studentsOnLectures.fragments.teacher.addGroup.presentation.NavigateToAddGroup
 import ru.malevichrp.studentsOnLectures.fragments.teacher.group.presentation.GroupScreen
@@ -14,6 +15,7 @@ import ru.malevichrp.studentsOnLectures.fragments.teacher.group.presentation.Nav
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.GroupsScreen
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
 import ru.malevichrp.studentsOnLectures.fragments.teacher.session.presentation.NavigateToSession
+import ru.malevichrp.studentsOnLectures.fragments.teacher.session.presentation.SessionScreen
 
 interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
     NavigateToAuth, NavigateToStudentSearch, NavigateToTeacherGroups,
@@ -36,7 +38,7 @@ interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
     }
 
     override fun navigateToStudentSearch() {
-        TODO("Not yet implemented")
+        navigate(SearchSessionScreen)
     }
 
     override fun navigateToAddGroup() {
@@ -48,6 +50,6 @@ interface Navigate : NavigateToChooseProfile, NavigateToRegistration,
     }
 
     override fun navigateToSession() {
-        TODO("Not yet implemented")
+        navigate(SessionScreen)
     }
 }

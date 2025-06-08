@@ -4,12 +4,12 @@ import ru.malevichrp.studentsOnLectures.core.presentation.UiState
 import ru.malevichrp.studentsOnLectures.fragments.student.searchSession.presentation.NavigateToStudentSearch
 import ru.malevichrp.studentsOnLectures.fragments.teacher.groups.presentation.NavigateToTeacherGroups
 import ru.malevichrp.studentsOnLectures.views.errorInput.ErrorInputUiState
-import ru.malevichrp.studentsOnLectures.views.errorInput.UpdateError
+import ru.malevichrp.studentsOnLectures.views.errorInput.UpdateErrorInput
 import ru.malevichrp.studentsOnLectures.views.text.UpdateText
 
 interface AuthUiState : UiState {
     fun show(
-        updateError: UpdateError,
+        updateErrorInput: UpdateErrorInput,
         updateText: UpdateText
     ) = Unit
 
@@ -17,14 +17,14 @@ interface AuthUiState : UiState {
     fun navigateStudent(navigate: NavigateToStudentSearch) = Unit
 
     object Base : AuthUiState {
-        override fun show(updateError: UpdateError, updateText: UpdateText) {
-            updateError.update(ErrorInputUiState.Base)
+        override fun show(updateErrorInput: UpdateErrorInput, updateText: UpdateText) {
+            updateErrorInput.update(ErrorInputUiState.Base)
         }
     }
 
     class Error(private val errorMessage: String) : AuthUiState {
-        override fun show(updateError: UpdateError, updateText: UpdateText) {
-            updateError.update(ErrorInputUiState.Error(errorMessage))
+        override fun show(updateErrorInput: UpdateErrorInput, updateText: UpdateText) {
+            updateErrorInput.update(ErrorInputUiState.Error(errorMessage))
         }
     }
 
@@ -41,13 +41,13 @@ interface AuthUiState : UiState {
     }
 
     object Teacher : AuthUiState {
-        override fun show(updateError: UpdateError, updateText: UpdateText) {
+        override fun show(updateErrorInput: UpdateErrorInput, updateText: UpdateText) {
             updateText.update("Teacher")
         }
     }
 
     object Student : AuthUiState {
-        override fun show(updateError: UpdateError, updateText: UpdateText) {
+        override fun show(updateErrorInput: UpdateErrorInput, updateText: UpdateText) {
             updateText.update("Student")
         }
     }

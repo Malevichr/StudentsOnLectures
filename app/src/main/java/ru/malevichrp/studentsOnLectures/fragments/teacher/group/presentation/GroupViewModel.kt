@@ -1,5 +1,7 @@
 package ru.malevichrp.studentsOnLectures.fragments.teacher.group.presentation
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import ru.malevichrp.studentsOnLectures.core.di.ClearViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.MyViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.RunAsync
@@ -20,8 +22,7 @@ class GroupViewModel(
     uiObservable,
     clearViewModel
 ), ShowFullNameViewModel by ShowFullNameViewModel.Base(repository),
-    ShowGroupNameViewModel by ShowGroupNameViewModel.Base(repository)
-{
+    ShowGroupNameViewModel by ShowGroupNameViewModel.Base(repository) {
     fun sessions() {
         handleAsync {
             val data: List<SessionData> = repository.sessions()
@@ -31,6 +32,18 @@ class GroupViewModel(
                     text = timeFormater.format(it.time)
                 )
             })
+        }
+    }
+
+    fun createNewSession() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.createNewSession()
+        }
+    }
+
+    fun navigateToSession(sessionId: Long) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.navigateToSession(sessionId)
         }
     }
 }

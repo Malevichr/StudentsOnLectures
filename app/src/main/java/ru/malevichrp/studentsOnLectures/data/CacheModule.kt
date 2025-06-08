@@ -7,6 +7,7 @@ interface CacheModule {
     fun userDao(): UserDao
     fun groupDao(): GroupsDao
     fun sessionDao(): SessionDao
+    fun studentDao(): StudentDao
     class Base(applicationContext: Context) : CacheModule {
         private val database by lazy {
             Room.databaseBuilder(
@@ -21,5 +22,6 @@ interface CacheModule {
         override fun userDao(): UserDao = database.userDao()
         override fun groupDao(): GroupsDao = database.groupDao()
         override fun sessionDao(): SessionDao = database.sessionDao()
+        override fun studentDao(): StudentDao = database.studentsDao()
     }
 }

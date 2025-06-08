@@ -8,14 +8,16 @@ import ru.malevichrp.studentsOnLectures.core.di.ProvideViewModel
 import ru.malevichrp.studentsOnLectures.core.presentation.AbstractFragment
 import ru.malevichrp.studentsOnLectures.core.presentation.BackAction
 import ru.malevichrp.studentsOnLectures.databinding.FragmentGroupBinding
+import ru.malevichrp.studentsOnLectures.fragments.teacher.session.presentation.NavigateToSession
 import ru.malevichrp.studentsOnLectures.views.recycler.TextRecyclerAdapter
 
 class GroupFragment : AbstractFragment.Async<GroupUiState, GroupViewModel, FragmentGroupBinding>() {
     override val update: (GroupUiState) -> Unit = { uiState ->
         uiState.show(adapter)
     }
-    private val adapter = TextRecyclerAdapter {
-
+    private val adapter = TextRecyclerAdapter { sessionId ->
+        viewModel.navigateToSession(sessionId)
+        (requireActivity() as NavigateToSession).navigateToSession()
     }
 
     override fun inflate(inflater: LayoutInflater, container: ViewGroup?) =
@@ -26,14 +28,15 @@ class GroupFragment : AbstractFragment.Async<GroupUiState, GroupViewModel, Fragm
         viewModel =
             (requireActivity() as ProvideViewModel).provideViewModel(GroupViewModel::class.java)
         binding.name.text = viewModel.fullName()
-        binding.groupName.text =  "Group: ${viewModel.groupName()}"
+        binding.groupName.text = "Group: ${viewModel.groupName()}"
 
         binding.backButton.setOnClickListener {
             (requireActivity() as BackAction).back()
         }
 
-        binding.startSessionButton.setOnClickListener {
-
+        binding.createNewSession.setOnClickListener {
+            viewModel.createNewSession()
+            (requireActivity() as NavigateToSession).navigateToSession()
         }
 
         binding.groupsRecycler.adapter = adapter

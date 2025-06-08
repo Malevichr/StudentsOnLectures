@@ -9,7 +9,9 @@ import androidx.room.Query
 interface SessionDao {
     @Query("SELECT * FROM Sessions WHERE group_id = :id")
     suspend fun sessionsByGroup(id: Long): List<SessionCache>
+    @Query("SELECT * FROM Sessions WHERE id = :id")
+    suspend fun sessionById(id: Long): SessionCache
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addSession(sessionCache: SessionCache)
+    suspend fun addSession(sessionCache: SessionCache) : Long
 }

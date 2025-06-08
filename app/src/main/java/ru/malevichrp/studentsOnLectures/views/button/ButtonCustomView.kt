@@ -1,13 +1,15 @@
-package ru.malevichrp.studentsOnLectures.views.text
+package ru.malevichrp.studentsOnLectures.views.button
 
 import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
+import androidx.appcompat.widget.AppCompatButton
+import com.google.android.material.button.MaterialButton
 import ru.malevichrp.studentsOnLectures.views.common.UpdateVisibility
 import ru.malevichrp.studentsOnLectures.views.common.VisibilitySavedState
 import ru.malevichrp.studentsOnLectures.views.common.VisibilityUiState
 
-class TextCustomView : androidx.appcompat.widget.AppCompatTextView, UpdateCustomText {
+class ButtonCustomView : AppCompatButton, UpdateVisibility {
     constructor(context: Context) : super(context)
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(
@@ -16,7 +18,7 @@ class TextCustomView : androidx.appcompat.widget.AppCompatTextView, UpdateCustom
         defStyleAttr
     )
 
-    private var state: VisibilityUiState = VisibilityUiState.Gone
+    private var state: VisibilityUiState = VisibilityUiState.Visible
 
     override fun onSaveInstanceState(): Parcelable? {
         return super.onSaveInstanceState()?.let {
@@ -40,13 +42,4 @@ class TextCustomView : androidx.appcompat.widget.AppCompatTextView, UpdateCustom
         state = visibilityUiState
         state.update(this)
     }
-
-    override fun update(text: String) {
-        this.text = text
-    }
-}
-
-interface UpdateCustomText : UpdateVisibility, UpdateText
-interface UpdateText {
-    fun update(text: String)
 }

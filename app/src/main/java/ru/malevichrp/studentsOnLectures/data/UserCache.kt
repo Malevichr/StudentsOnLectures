@@ -7,7 +7,10 @@ import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "Users",
-    indices = [Index(value = ["full_name", "is_teacher"], unique = true)]
+    indices = [Index(
+        value =
+        ["full_name", "is_teacher"], unique = true
+    )]
 )
 data class UserCache(
     @PrimaryKey(autoGenerate = true)

@@ -33,7 +33,7 @@
         android:hint="@string/full_name"
         android:padding="8dp">
 
-        <ru.malevichrp.studentsOnLectures.views.errorInput.ErrorInputCustomView
+        <ru.malevichrp.studentsOnLectures.views.errorInput.ErrorInputInputCustomView
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

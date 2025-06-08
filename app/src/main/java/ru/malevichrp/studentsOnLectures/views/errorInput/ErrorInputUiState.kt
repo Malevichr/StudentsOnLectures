@@ -3,14 +3,14 @@ package ru.malevichrp.studentsOnLectures.views.errorInput
 import java.io.Serializable
 
 interface ErrorInputUiState : Serializable {
-    fun update(updateError: UpdateError)
+    fun update(updateErrorInput: UpdateErrorInput)
     abstract class Abstract(
         private val isError: Boolean,
         private val errorMessage: String = "",
     ) : ErrorInputUiState {
-        override fun update(updateError: UpdateError) {
-            updateError.update(isError)
-            updateError.update(
+        override fun update(updateErrorInput: UpdateErrorInput) {
+            updateErrorInput.update(isError)
+            updateErrorInput.update(
                 if (isError)
                     errorMessage
                 else

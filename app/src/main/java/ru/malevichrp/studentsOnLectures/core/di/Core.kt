@@ -25,5 +25,6 @@ class SharedCollection(sharedPreferences: SharedPreferences) {
     val targetGroupId = LongCache.Base(sharedPreferences, "targetGroupId", -1)
     val targetName = StringCache.Base(sharedPreferences, "targetName", "Name")
     val targetGroupName = StringCache.Base(sharedPreferences, "targetGroupName", "Group name")
-
+    val targetSessionId = LongCache.Base(sharedPreferences, "targetSessionId", -1)
+    val targetSessionTimestamp = LongCache.Base(sharedPreferences, "targetSessionTimestamp", 0)
 }

@@ -56,7 +56,7 @@ class TextRecyclerAdapter(
         }
 
         override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-            return textItems[oldItemPosition] == newList[newItemPosition]
+            return textItems[oldItemPosition].text == newList[newItemPosition].text
         }
     }
 }
