@@ -4,22 +4,25 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
+
     <Button
         android:id="@+id/teacherButton"
-        android:text="@string/teacher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:text="@string/teacher" />
+
     <Button
         android:id="@+id/studentButton"
-        android:text="@string/student"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:text="@string/student" />
+
     <Button
         android:id="@+id/registrationButton"
-        android:text="@string/registration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"/>
+        android:layout_margin="8dp"
+        android:text="@string/registration" />
 </LinearLayout>

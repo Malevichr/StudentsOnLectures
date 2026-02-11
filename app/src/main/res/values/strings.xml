@@ -3,4 +3,18 @@
     <string name="teacher">Teacher</string>
     <string name="student">Student</string>
     <string name="registration">Registration</string>
+    <string name="full_name">Full name</string>
+    <string name="are_you_teacher">Are you teacher?</string>
+    <string name="back">Back</string>
+    <string name="register">Register</string>
+    <string name="authorization">Authorization</string>
+    <string name="log_in">Log in</string>
+    <string name="add_group">Add group</string>
+    <string name="exit">Exit</string>
+    <string name="start_new_session">Start new session</string>
+    <string name="start_session">Start session</string>
+    <string name="stop_session">Stop session</string>
+    <string name="retry">Retry</string>
+    <string name="find_session">Find session</string>
+    <string name="connect">Connect</string>
 </resources>
